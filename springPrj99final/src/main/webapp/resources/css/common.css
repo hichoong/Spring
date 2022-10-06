@@ -1,0 +1,25 @@
+<style>
+    /* 공통 */
+    html, body{
+        padding: 0px;
+        margin: 0px;
+    }
+    div, aside, main, header, input {
+        box-sizing: border-box;
+    }
+    aside{
+        width: 20vw;
+        height: 100vh;
+    }
+    main{
+        width: 60vw;
+        height: 100vh;
+    }
+    header{
+        width: 100%;
+        height: 20%;
+    }
+    #wrap{
+        display: flex;
+    }
+</style>
