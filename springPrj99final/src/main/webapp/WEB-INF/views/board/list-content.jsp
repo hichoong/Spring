@@ -10,7 +10,7 @@
             grid-template-columns: 1fr 5fr 3fr 1fr;
             grid-template-rows: repeat(11, 20px);
             row-gap: 10px;
-            
+            align-content: center;
         }
         .table-header{
             text-align: center;

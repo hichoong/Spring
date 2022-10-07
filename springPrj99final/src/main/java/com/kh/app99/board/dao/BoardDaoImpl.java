@@ -29,6 +29,11 @@ public class BoardDaoImpl implements BoardDao {
 	public int increaseHit(SqlSessionTemplate sst, String no) {
 		return sst.update("boardMapper.increaseHit", no);
 	}
+
+	@Override
+	public int updateOne(SqlSessionTemplate sst, BoardVo vo) {
+		return sst.update("boardMapper.updateOne", vo);
+	}
 	
 	
 }

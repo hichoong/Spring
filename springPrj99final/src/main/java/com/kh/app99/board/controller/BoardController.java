@@ -74,11 +74,28 @@ public class BoardController {
 		}
 	}
 	
-	//게시글 수정
+	//게시글 수정 화면
 	@GetMapping("edit/{no}")
 	public String edit(@PathVariable String no, Model model) {
 		BoardVo vo = bs.selectOne(no);
 		model.addAttribute("vo", vo);
 		return "board/edit";
 	}
+	
+	//게시글 수정 로직
+	@PostMapping("edit/{no}")
+	public String edit(@PathVariable String no, BoardVo vo, HttpSession session) {
+		//DB
+		vo.setNo(no);
+		int result = bs.edit(vo);
+		//결과
+		if(result == 1) {
+			session.setAttribute("alertMsg", "게시글 수정 성공!!!");
+			return "redirect:/board/detail/" + no;			
+		}else {
+			session.setAttribute("alertMsg", "게시글 수정 실패...");
+			return "redirect:/";
+		}
+	}
+	
 }

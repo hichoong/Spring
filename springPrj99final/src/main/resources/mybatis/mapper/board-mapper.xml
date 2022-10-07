@@ -61,4 +61,13 @@
 			WHERE NO = #{no}
 			AND STATUS = 'O'
 	</update>
+	
+	<update id="updateOne">
+		UPDATE BOARD
+			SET
+				TITLE = #{title}
+				, CONTENT =#{content}
+				, MODIFY_DATE = SYSDATE
+		WHERE NO = #{no}
+	</update>
 </mapper>

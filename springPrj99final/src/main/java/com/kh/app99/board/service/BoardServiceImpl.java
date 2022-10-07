@@ -44,5 +44,12 @@ public class BoardServiceImpl implements BoardService {
 			return null;
 		}
 	}
+	
+	//게시글 수정 
+	@Override
+	public int edit(BoardVo vo) {
+		
+		return dao.updateOne(sst, vo);
+	}
 
 }

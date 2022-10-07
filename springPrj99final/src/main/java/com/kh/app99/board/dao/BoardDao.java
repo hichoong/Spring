@@ -19,4 +19,7 @@ public interface BoardDao {
 	
 	//게시글 조회수 증가
 	int increaseHit(SqlSessionTemplate sst, String no);
+	
+	//게시글 수정
+	int updateOne(SqlSessionTemplate sst, BoardVo vo);
 }

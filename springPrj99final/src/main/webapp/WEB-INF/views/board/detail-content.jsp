@@ -33,8 +33,8 @@
     </div>
 
 	<c:if test="${vo.writer eq loginMember.nick}">
-	    <div id="center-bot" class="btn btn-warning">
-	        <a href="${root}/board/edit/${vo.no}">수정하기</a>
-	        <a href="${root}/board/delete/${vo.no}">삭제하기</a>
+	    <div id="center-bot" >
+	        <a href="${root}/board/edit/${vo.no}" class="btn btn-warning">수정하기</a>
+	        <a href="${root}/board/delete/${vo.no}" class="btn btn-danger">삭제하기</a>
 	    </div>
    </c:if>

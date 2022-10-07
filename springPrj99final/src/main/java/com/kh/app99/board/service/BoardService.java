@@ -11,5 +11,7 @@ public interface BoardService {
 	List<BoardVo> selectList();
 	//게시글 상세조회 (게시글 번호)
 	BoardVo selectOne(String no);
+	//게시글 수정하기()
+	int edit(BoardVo vo);
 
 }
