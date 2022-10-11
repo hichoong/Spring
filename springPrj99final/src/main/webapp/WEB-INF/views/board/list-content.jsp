@@ -18,6 +18,13 @@
         #center > div{
             border-bottom: 1px dashed black;
         }
+        #page-area{
+        width: 30%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+   		}
+</style>
     </style>
 
     <div id="center">
@@ -39,4 +46,19 @@
 	    <div style="text-align: right;">
 	        <a href="${root}/board/write" class="btn btn-primary">글 작성</a>
 	    </div>
-    </c:if>   
+    </c:if>
+    
+    
+    <div id="page-area">
+    	
+    	<c:if test="${pv.startPage ne 1}">
+	    	<a href="/app99/board/list/${pv.startPage - 1}" class="btn btn-primary btn-sm">이전</a>    	
+    	</c:if>
+    	<c:forEach begin="${pv.startPage}" end="${pv.endPage}" var="i">    		    		    	
+	    	<a href="/app99/board/list/${i}" class="btn btn-primary btn-sm">${i}</a>
+    	</c:forEach>
+	    <c:if test="${pv.endPage ne pv.maxPage}">
+	    	<a href="/app99/board/list/${pv.endPage + 1}" class="btn btn-primary btn-sm">다음</a>	    
+	    </c:if>	
+    </div>
+       

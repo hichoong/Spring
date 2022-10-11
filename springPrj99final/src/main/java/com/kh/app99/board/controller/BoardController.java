@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.app99.board.service.BoardService;
 import com.kh.app99.board.vo.BoardVo;
+import com.kh.app99.common.PageVo;
+import com.kh.app99.common.Pagination;
 import com.kh.app99.member.vo.MemberVo;
 
 @Controller
@@ -28,10 +30,17 @@ public class BoardController {
 	}
 	
 	//게시글 목록 조회 화면
-	@GetMapping("list")
-	public String list(Model model) {
-		List<BoardVo> voList = bs.selectList();
+	@GetMapping("list/{pno}")
+	public String list(Model model,@PathVariable int pno) {
+		
+		int totalCount = bs.selectTotalCnt();
+		PageVo pv = Pagination.getPageVo(totalCount, pno, 5, 10);
+		
+		List<BoardVo> voList = bs.selectList(pv);
 		model.addAttribute("voList", voList);
+		model.addAttribute("pv", pv);
+		
+		
 		return "board/list";
 	}
 	
@@ -95,6 +104,20 @@ public class BoardController {
 		}else {
 			session.setAttribute("alertMsg", "게시글 수정 실패...");
 			return "redirect:/";
+		}
+	}
+	
+	@GetMapping("delete/{no}")
+	public String delete(@PathVariable String no, HttpSession session, Model model) {
+		int result = bs.delete(no);
+		if(result == 1 ) {
+			//성공 => 알람, 리스트
+			session.setAttribute("alertMsg", "게시글 삭제 성공!!!");
+			return "redirect:/board/list/1";
+		}else {
+			//실패 => 메세지, 알람페이지
+			model.addAttribute("msg", "게시글 삭제 실패...");
+			return "common/errorPage";
 		}
 	}
 	

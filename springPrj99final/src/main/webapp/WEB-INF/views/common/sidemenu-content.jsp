@@ -88,7 +88,7 @@
 	      </c:if>
 	   </div>
 	   
-	   <div class="sidemenu"> <a href="/app99/board/list">자유게시판</a></div>
+	   <div class="sidemenu"> <a href="/app99/board/list/1">자유게시판</a></div>
 	   <div class="sidemenu">2</div>
 	   <div class="sidemenu">3</div>
 	   <div class="sidemenu">4</div>
