@@ -17,16 +17,19 @@ import com.kh.app99.board.vo.BoardVo;
 import com.kh.app99.common.PageVo;
 import com.kh.app99.common.Pagination;
 import com.kh.app99.member.vo.MemberVo;
+import com.kh.app99.reply.service.ReplyService;
+import com.kh.app99.reply.vo.ReplyVo;
 
 @Controller
 @RequestMapping("board")
 public class BoardController {
 
 	private final BoardService bs;
-	
+	private final ReplyService rs;
 	@Autowired
-	public BoardController(BoardService bs) {
+	public BoardController(BoardService bs, ReplyService rs) {
 		this.bs = bs;
+		this.rs = rs;
 	}
 	
 	//게시글 목록 조회 화면
@@ -49,7 +52,11 @@ public class BoardController {
 	public String detail(@PathVariable(required = false) String no, Model model) {
 		//디비 가서 게시글 1개 조회 (번호로)
 		BoardVo vo = bs.selectOne(no);
+		//댓글도 함께 조회
+		List<ReplyVo> replyList = rs.selectList(no);
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("replyList", replyList);
 		return "board/detail";
 	}
 	

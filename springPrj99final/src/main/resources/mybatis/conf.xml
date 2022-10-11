@@ -15,5 +15,6 @@
  <typeAliases>
  	<typeAlias type="com.kh.app99.member.vo.MemberVo" alias="MemberVo"/>
  	<typeAlias type="com.kh.app99.board.vo.BoardVo" alias="BoardVo"/>
+ 	<typeAlias type="com.kh.app99.reply.vo.ReplyVo" alias="ReplyVo"/>
  </typeAliases>
 </configuration>

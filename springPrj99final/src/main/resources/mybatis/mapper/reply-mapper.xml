@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="replyMapper">
+	<insert id="insertOne" >
+		INSERT INTO REPLY
+		(
+			NO
+			,CONTENT
+			,BNO
+			,WRITER
+		)
+		VALUES
+		(
+			SEQ_REPLY_NO.NEXTVAL
+			, #{content}
+			, #{bno}
+			, #{writer}
+		)
+	
+	</insert>
+	
+	<select id="selectListByBno" resultType="ReplyVo">
+		SELECT 
+			R.NO
+			,R.CONTENT
+			,R.BNO
+			,R.ENROLL_DATE
+			,R.STATUS
+			,M.NICK AS WRITER
+		FROM REPLY R 
+		JOIN MEMBER M
+		ON R.WRITER = M.NO
+		WHERE R.BNO = #{bno}
+		AND R.STATUS = 'O'
+		ORDER BY R.NO DESC
+	</select>
+</mapper>
