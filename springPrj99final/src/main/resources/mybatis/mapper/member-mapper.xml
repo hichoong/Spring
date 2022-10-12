@@ -75,4 +75,11 @@
 		FROM MEMBER
 		WHERE ID = #{userId}
 	</select>
+	
+	<select id="selectList" resultType="MemberVo">
+		SELECT *
+		FROM MEMBER
+		WHERE STATUS = 'O'
+		ORDER BY NO DESC
+	</select>
 </mapper>

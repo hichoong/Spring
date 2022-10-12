@@ -1,5 +1,7 @@
 package com.kh.app99.member.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -64,6 +66,12 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int checkDup(String userId) {
 		return dao.selectOneById(sst, userId);
+	}
+	
+	//회원목록 조회
+	@Override
+	public List<MemberVo> selectList() {
+		return dao.selectList(sst);
 	}
 
 	

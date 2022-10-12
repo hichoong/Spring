@@ -83,7 +83,7 @@ public class BoardController {
 		//화면 선택
 		if(result == 1) {
 			session.setAttribute("alertMsg", "게시글 작성 성공!");
-			return "redirect:/board/list";
+			return "redirect:/board/list/1";
 		}else {
 			model.addAttribute("msg", "게시글 작성 실패,,,");
 			return "error/errorPage";
